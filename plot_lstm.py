@@ -44,36 +44,15 @@ model.add(Dense(OUTPUT_SIZE))
 
 model.summary()
 
-# _________________________________________________________________
-# Layer (type)                 Output Shape              Param #
-# =================================================================
-# lstm_1 (LSTM)                (None, 8, 64)             25088
-# _________________________________________________________________
-# activation_1 (Activation)    (None, 8, 64)             0
-# _________________________________________________________________
-# dropout_1 (Dropout)          (None, 8, 64)             0
-# _________________________________________________________________
-# lstm_2 (LSTM)                (None, 256)               328704
-# _________________________________________________________________
-# activation_2 (Activation)    (None, 256)               0
-# _________________________________________________________________
-# dropout_2 (Dropout)          (None, 256)               0
-# _________________________________________________________________
-# dense_1 (Dense)              (None, 33)                8481
-# =================================================================
-# Total params: 362,273
-# Trainable params: 362,273
-# Non-trainable params: 0
-# _________________________________________________________________
-
-lstm_model = keras.models.load_model("my_lstm.h5")
+# lstm_model = keras.models.load_model("my_lstm_1.h5")
+model.load_weights("myModel/lstm.h5")
 
 scaler = data_preprocess.scaler
 # 将归一化数据转化为原来的数
 y_test = scaler.inverse_transform(labels_test)
 
 # 用模型进行预测
-pred = lstm_model.predict(x_test)
+pred = model.predict(x_test)
 # 将预测值转化为原来的数
 lstm_pred = scaler.inverse_transform(pred)
 print("LSTM MAE:", metrics.mean_absolute_error(y_test, lstm_pred))

@@ -53,43 +53,43 @@ model.summary()
 
 # model.load_weights("Model/lstm.h5")
 
-# model.compile(loss='mse', optimizer='rmsprop', metrics=['mae', rmse, 'cosine'])
-model.compile(loss='mse', optimizer='rmsprop', metrics=['mae', 'cosine'])
+model.compile(loss='mse', optimizer='rmsprop', metrics=['mae', rmse, 'cosine'])
+# model.compile(loss='mse', optimizer='rmsprop', metrics=['mae', 'cosine'])
 
 
-# filepath = "Model/lstm.h5"
-# checkpoint = ModelCheckpoint(filepath, monitor='val_loss', verbose=1, save_best_only=True, mode='min')
-# callbacks_list = [checkpoint]
+filepath = "myModel/lstm.h5"
+checkpoint = ModelCheckpoint(filepath, monitor='val_loss', verbose=1, save_best_only=True, mode='min')
+callbacks_list = [checkpoint]
 
 print('Train...')
 
-# model.fit(flow_train,labels_train,
-#           epochs=10,
-#           callbacks=callbacks_list,
-#           batch_size= BATCH_SIZE,
-#           validation_data=(flow_validation, labels_validation))
-
 model.fit(flow_train,labels_train,
           epochs=10,
+          callbacks=callbacks_list,
           batch_size= BATCH_SIZE,
           validation_data=(flow_validation, labels_validation))
 
-model.save('my_lstm.h5')
+# model.fit(flow_train,labels_train,
+#           epochs=10,
+#           batch_size= BATCH_SIZE,
+#           validation_data=(flow_validation, labels_validation))
 
-# score = model.evaluate(flow_test, labels_test, verbose=0)
-# print('Test socre:', score)
+# model.save('my_lstm_1.h5')
 
-"""
+score = model.evaluate(flow_test, labels_test, verbose=0)
+print('Test socre:', score)
+
+
 model_json = model.to_json()
-with open("Model/lstm.json", "w") as json_file:
+with open("myModel/lstm.json", "w") as json_file:
     json_file.write(model_json)
-model.save_weights("Model/lstm.h5")
+model.save_weights("myModel/lstm.h5")
 print("Save model to disk")
 
-json_file = open('Model/lstm.json', 'r')
+json_file = open('myModel/lstm.json', 'r')
 loaded_model_json = json_file.read()
 json_file.close()
 lstm_model = model_from_json(loaded_model_json)
 
-lstm_model.load_weights("Model/lstm.h5")
-"""
+lstm_model.load_weights("myModel/lstm.h5")
+
