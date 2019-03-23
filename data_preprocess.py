@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-#!/usr/bin/env python
+# !/usr/bin/env python
 
 """
 处理原始数据集：对数据进行归一化处理并转换为输入张量的形式
@@ -12,6 +12,7 @@ from sklearn import preprocessing
 
 FILE_NUMS = 33
 
+
 # 读取所有.txt 文件的列
 def read_files():
     """
@@ -23,22 +24,23 @@ def read_files():
     list_ = []
     # 读33个文件，station1 ~ station33
     for i in range(FILE_NUMS):
-        path = r'./PeMS/station' + str(i+1)
+        path = r'./PeMS/station' + str(i + 1)
         allfiles = glob.glob(path + "/*.txt")
         frame = pd.DataFrame()
 
         frame_ = []
         # 读station里的txt，28个文件，从2017.1.1~2017.7.15，共196天
         for file_ in allfiles:
-            table = pd.read_table(file_, usecols=[0,1])
+            table = pd.read_table(file_, usecols=[0, 1])
             frame_.append(table)
         # frame存储了196天的数据
         frame = pd.concat(frame_)
         list_.append(frame)
 
-    # allframes存储了33个station的数据
+    # allframes存储了33个station的数据, (1862784, 2), 1862784 = 33站x196天x24小时x12个五分钟
     allframes = pd.concat(list_)
     return allframes
+
 
 # 按时间序列对数据分组并标准化
 def group_by_time():
@@ -51,15 +53,18 @@ def group_by_time():
     frame = read_files()
     # 将第一列的格式改为日期
     frame['5 Minutes'] = pd.to_datetime(frame['5 Minutes'], format='%m/%d/%Y %H:%M')
+    # frame['5 Minutes'] = pd.to_datetime(frame['5 Minutes'], format='%m/%d/%Y %H,%M')
 
     # 每个时间段存储33个数据
     values = frame.groupby('5 Minutes')['Flow (Veh/5 Minutes)'].apply(list)
     vehicles = []
     for i in range(len(values)):
+        # 最后得到的vehicle是列表，里面有56448个列表，每个列表里有33个元素
         vehicles.append(values[i])
-    #vehicles = np.asarray(vehicles)
-    #vechicles = vehicles.reshape((196, 288*FILE_NUMS))
-    #vechicles = np.array([np.reshape(x, (288, FILE_NUMS)) for x in vechicles])
+    # vehicles = np.asarray(vehicles)
+    # vechicles = vehicles.reshape((196, 288*FILE_NUMS))
+    # vechicles = np.array([np.reshape(x, (288, FILE_NUMS)) for x in vechicles])
+    # vehicles_npy的形状为(56448, 33)
     vehicles_npy = np.array(vehicles)
     # 另存为.npy文件，这样就不用每次都转换数据了
     np.save('vehicles.npy', vehicles_npy)

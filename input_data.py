@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-#!/usr/bin/env python
+# !/usr/bin/env python
 
 """
 把数据集分割为训练集、验证集和测试集
@@ -10,6 +10,7 @@ import numpy
 import data_preprocess
 from tensorflow.contrib.learn.python.learn.datasets import base
 from sklearn.model_selection import train_test_split
+
 
 class DataSet(object):
     def __init__(self, flow, labels):
@@ -36,7 +37,7 @@ class DataSet(object):
     def epochs_completed(self):
         return self._epochs_completed
 
-    def next_batch(self, batch_size, shuffle = True):
+    def next_batch(self, batch_size, shuffle=True):
         """
         Return the next 'batch_size' examples from this dataset
         """
@@ -69,12 +70,14 @@ class DataSet(object):
             end = self._index_in_epoch
             flow_new_part = self._flow[start:end]
             labels_new_part = self._labels[start:end]
-            return numpy.concatenate((flow_rest_part, flow_new_part), axis=0), numpy.concatenate((labels_rest_part, labels_new_part), axis=0)
+            return numpy.concatenate((flow_rest_part, flow_new_part), axis=0), numpy.concatenate(
+                (labels_rest_part, labels_new_part), axis=0)
 
         else:
             self._index_in_epoch += batch_size
             end = self._index_in_epoch
             return self._flow[start:end], self._labels[start:end]
+
 
 def create_data_sets():
     samples = data_preprocess.samples
@@ -83,14 +86,16 @@ def create_data_sets():
     flow = []
     labels = []
 
-    l = len(samples)-look_back-interval
+    # 决定历史输入的长度和预测的长度
+    l = len(samples) - look_back - interval
     for i in range(l):
         # 前8行数据为一组
-        flow.append(samples[i:(i+look_back)])
+        flow.append(samples[i:(i + look_back)])
         # 后1行作为标签
-        labels.append(samples[i+look_back+interval])
+        labels.append(samples[i + look_back + interval])
 
     return np.asarray(flow), np.asarray(labels)
+
 
 def read_data_sets():
     # flow(56440,8,33)
@@ -103,9 +108,9 @@ def read_data_sets():
     # train_labels(45152,33)
     # test_flow(11288,8,33)
     # test_labels(11288,33)
-    train_flow, test_flow, train_labels, test_labels = train_test_split(flow, 
-                                                                        labels, 
-                                                                        test_size = 0.2,
+    train_flow, test_flow, train_labels, test_labels = train_test_split(flow,
+                                                                        labels,
+                                                                        test_size=0.2,
                                                                         random_state=0)
     # 把训练集分为训练集和验证集
     # ① 验证集
@@ -126,6 +131,7 @@ def read_data_sets():
     validation = DataSet(validation_flow, validation_labels)
 
     return base.Datasets(train=train, validation=validation, test=test)
+
 
 train, validation, test = read_data_sets()
 print(train.flow.shape)

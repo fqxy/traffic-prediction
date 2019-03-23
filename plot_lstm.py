@@ -18,8 +18,10 @@ from keras.layers.core import Dense, Dropout, Activation
 from keras.layers import LSTM
 import keras.backend as K
 
+
 def rmse(y_true, y_pred):
-    return K.sqrt(K.mean(K.square(y_pred-y_true), axis=-1))
+    return K.sqrt(K.mean(K.square(y_pred - y_true), axis=-1))
+
 
 time_steps = 8
 BATCH_SIZE = 64
@@ -34,7 +36,7 @@ labels_test = labels[45152:]
 model = Sequential()
 model.add(LSTM(input_shape=(TIME_STEPS, INPUT_SIZE),
                output_dim=64,
-               return_sequences=True,))
+               return_sequences=True, ))
 model.add(Activation('tanh'))
 model.add(Dropout(0.5))
 model.add(LSTM(output_dim=256))
@@ -44,7 +46,7 @@ model.add(Dense(OUTPUT_SIZE))
 
 model.summary()
 
-# lstm_model = keras.models.load_model("my_lstm_1.h5")
+# load_weights()只能被Sequential对象调用
 model.load_weights("myModel/lstm.h5")
 
 scaler = data_preprocess.scaler
@@ -58,10 +60,9 @@ lstm_pred = scaler.inverse_transform(pred)
 print("LSTM MAE:", metrics.mean_absolute_error(y_test, lstm_pred))
 print("LSTM RMSE:", np.sqrt(metrics.mean_squared_error(y_test, lstm_pred)))
 
-
 plt.rcParams['font.sans-serif'] = ['SimHei']  # for Chinese characters
-#fig, ax = plt.subplots()
-fig = plt.figure(figsize=(8,10))
+# fig, ax = plt.subplots()
+fig = plt.figure(figsize=(8, 10))
 ax1 = fig.add_subplot(3, 1, 1)
 ax2 = fig.add_subplot(3, 1, 2)
 ax3 = fig.add_subplot(3, 1, 3)
@@ -71,14 +72,14 @@ delta = dt.timedelta(minutes=5)
 dates = mpl.dates.drange(date_1, date_2, delta)
 
 ax1.xaxis.set_major_locator(md.HourLocator(byhour=range(24), interval=2))
-#ax.xaxis.set_major_locator(md.MinuteLocator(byminute=range(60), interval=40))
+# ax.xaxis.set_major_locator(md.MinuteLocator(byminute=range(60), interval=40))
 ax1.xaxis.set_major_formatter(md.DateFormatter('%H:%M'))
-#plt.xticks(pd.date_range(date_1,date_2,freq='5min'))#时间间隔
+# plt.xticks(pd.date_range(date_1,date_2,freq='5min'))#时间间隔
 ax2.xaxis.set_major_locator(md.HourLocator(byhour=range(24), interval=2))
-#ax.xaxis.set_major_locator(md.MinuteLocator(byminute=range(60), interval=40))
+# ax.xaxis.set_major_locator(md.MinuteLocator(byminute=range(60), interval=40))
 ax2.xaxis.set_major_formatter(md.DateFormatter('%H:%M'))
 ax3.xaxis.set_major_locator(md.HourLocator(byhour=range(24), interval=2))
-#ax.xaxis.set_major_locator(md.MinuteLocator(byminute=range(60), interval=40))
+# ax.xaxis.set_major_locator(md.MinuteLocator(byminute=range(60), interval=40))
 ax3.xaxis.set_major_formatter(md.DateFormatter('%H:%M'))
 #
 # #plt.ylim((0, 900))
@@ -92,7 +93,7 @@ plt.ylim((0, 900))
 plt.yticks(np.linspace(0, 900, 10))
 plt.xticks(rotation=30)
 l3, = ax2.plot(dates, y_test[56:344, 16], label=u"真实值")
-l4, = ax2.plot(dates, lstm_pred[56:344, 16], color='red',label=u"LSTMs")
+l4, = ax2.plot(dates, lstm_pred[56:344, 16], color='red', label=u"LSTMs")
 plt.legend(handles=[l3, l4], loc='upper right')
 #
 # ax = plt.gca()
