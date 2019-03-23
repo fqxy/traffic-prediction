@@ -72,7 +72,7 @@ def group_by_time():
 
 
 # vehicles = group_by_time()
-# 加载.npy文件
+# 加载.npy文件，(56448, 33)
 vehicles = np.load('vehicles.npy')
 scaler = preprocessing.MinMaxScaler()
 samples = scaler.fit_transform(vehicles)

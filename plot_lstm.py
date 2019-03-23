@@ -47,7 +47,7 @@ model.add(Dense(OUTPUT_SIZE))
 model.summary()
 
 # load_weights()只能被Sequential对象调用
-model.load_weights("myModel/lstm.h5")
+model.load_weights("myModel/lstm_epochs_20.h5")
 
 scaler = data_preprocess.scaler
 # 将归一化数据转化为原来的数
