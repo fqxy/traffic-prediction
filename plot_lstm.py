@@ -11,6 +11,7 @@ import pandas as pd
 import datetime as dt
 import data_preprocess
 import input_data
+import build_model
 
 import keras
 from keras.models import Sequential
@@ -33,16 +34,7 @@ flow, labels = input_data.create_data_sets()
 x_test = flow[45152:]
 labels_test = labels[45152:]
 
-model = Sequential()
-model.add(LSTM(input_shape=(TIME_STEPS, INPUT_SIZE),
-               output_dim=64,
-               return_sequences=True, ))
-model.add(Activation('tanh'))
-model.add(Dropout(0.5))
-model.add(LSTM(output_dim=256))
-model.add(Activation('tanh'))
-model.add(Dropout(0.5))
-model.add(Dense(OUTPUT_SIZE))
+model = build_model.build_lstm()
 
 model.summary()
 

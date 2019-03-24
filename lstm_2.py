@@ -3,9 +3,9 @@
 
 from __future__ import print_function
 
-from keras.models import Sequential
+from keras.models import Sequential, Model
 from keras.models import model_from_json
-from keras.layers.core import Dense, Dropout, Activation
+from keras.layers import Input, Dense, Dropout, Activation
 from keras.layers import LSTM
 from keras.layers.wrappers import TimeDistributed
 from keras.layers.normalization import BatchNormalization
@@ -16,7 +16,6 @@ import keras.backend as K
 from keras.utils import plot_model
 
 import input_data
-import build_model
 
 TIME_STEPS = 8  # 输入的时间步数
 INPUT_SIZE = 33  # 每步有多少数据
@@ -44,15 +43,34 @@ labels_validation = validation.labels
 
 print('build model...')
 
-model = build_model.build_lstm()
+# model = Sequential()
+# model.add(LSTM(input_shape=(TIME_STEPS, INPUT_SIZE),
+#                output_dim=64,
+#                return_sequences=True, ))
+# model.add(Activation('tanh'))
+# model.add(Dropout(0.5))
+# model.add(LSTM(output_dim=256))
+# model.add(Activation('tanh'))
+# model.add(Dropout(0.5))
+# model.add(Dense(OUTPUT_SIZE))
+
+input  =  Input (shape = (TIME_STEPS,  INPUT_SIZE),  name = 'input' )
+lstm1  =  LSTM (output_dim = 64,  name = 'lstm1' )(input)
+dropout1 = Dropout(0.5)(lstm1)
+activation1 = Activation('tanh')(dropout1)
+lstm2  =  LSTM (output_dim = 64,  name = 'lstm2' )(dropout1)
+dropout2 = Dropout(0.5)(lstm2)
+activation2 = Activation('tanh')(dropout2)
+model  =  Model( inputs = input ,  outputs = activation2)
+
 
 # 打印出网络结构
 model.summary()
 
 # 产生网络拓扑图
-plot_model(model, to_file='plotModel/lstm.png')
+plot_model(model, to_file='plotModel/lstm_2.png')
 
-# exit()
+exit()
 
 # model.load_weights("Model/lstm.h5")
 
@@ -61,7 +79,7 @@ model.compile(loss='mse', optimizer='rmsprop', metrics=['mae', rmse, 'cosine'])
 # model.compile(loss='mse', optimizer='rmsprop', metrics=['mae', 'cosine'])
 
 
-filepath = "myModel/lstm_hiden_node_20.h5"
+filepath = "myModel/lstm_epochs_20.h5"
 checkpoint = ModelCheckpoint(filepath, monitor='val_loss', verbose=1, save_best_only=True, mode='min')
 callbacks_list = [checkpoint]
 

@@ -8,6 +8,7 @@ from keras.layers.normalization import BatchNormalization
 from keras.layers.wrappers import TimeDistributed
 from keras.optimizers import RMSprop
 from keras.callbacks import ModelCheckpoint
+from keras.utils import plot_model
 import keras.backend as K
 import input_data
 
@@ -74,21 +75,24 @@ model.add(Activation('tanh'))
 model.add(Dropout(0.5))
 model.add(Dense(33))
 
+# 打印出网络结构
 model.summary()
 
-model.load_weights("Model/cnn_lstm_final.h5")
+# 产生网络拓扑图
+plot_model(model, to_file='plotModel/cnn_lstm.png')
 
 model.compile(loss='mean_squared_error',
               optimizer='rmsprop',
               metrics=['mae', 'cosine'])
 
-filepath = "Model/cnn_lstm.h5"
+filepath = "myModel/cnn_lstm.h5"
 checkpoint = ModelCheckpoint(filepath, monitor='val_loss', verbose=1, save_best_only=True, mode='min')
 callbacks_list = [checkpoint]
 
 # 训练
 print('Train...')
-model.fit(flow_train, labels_train, 
+model.fit(flow_train,
+          labels_train,
 #          validation_split=0.33,
           epochs=epochs, 
           batch_size=batch_size,
