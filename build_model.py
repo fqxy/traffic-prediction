@@ -14,7 +14,7 @@ from keras.utils import plot_model
 TIME_STEPS = 8  # 输入的时间步数
 INPUT_SIZE = 33  # 每步有多少数据
 OUTPUT_SIZE = 33  # 输出的维度
-EPOCHS = 20  # 迭代次数
+EPOCHS = 10  # 迭代次数
 BATCH_SIZE = 64
 
 def build_lstm():

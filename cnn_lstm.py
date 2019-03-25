@@ -45,10 +45,14 @@ print('build model...')
 model = Sequential()
 
 # 第一个卷积层
-model.add(TimeDistributed(Conv1D(40,
-                                 kernel_size[1],
+# 有None（未知）个样本，每个样本input_dim = (time_steps, 33, 1)
+# 现对每步时间都做卷积，用TimeDistributed(CNN_model, input_shape = input_dim)
+# 卷积的操作本质上是三维的
+model.add(TimeDistributed(Conv1D(filters=40,
+                                 kernel_size=kernel_size[1],
                                  strides=1,
-                                 padding='valid'), input_shape=[time_steps, 33, 1]))
+                                 padding='valid'),
+                          input_shape=[time_steps, 33, 1]))
 model.add(TimeDistributed(BatchNormalization()))
 model.add(TimeDistributed(Activation('relu')))
 
@@ -80,6 +84,55 @@ model.summary()
 
 # 产生网络拓扑图
 plot_model(model, to_file='plotModel/cnn_lstm.png')
+
+exit()
+
+# _________________________________________________________________
+# Layer (type)                 Output Shape              Param #
+# =================================================================
+# time_distributed_1 (TimeDist (None, 8, 31, 40)         160
+# _________________________________________________________________
+# time_distributed_2 (TimeDist (None, 8, 31, 40)         160
+# _________________________________________________________________
+# time_distributed_3 (TimeDist (None, 8, 31, 40)         0
+# _________________________________________________________________
+# time_distributed_4 (TimeDist (None, 8, 29, 40)         4840
+# _________________________________________________________________
+# time_distributed_5 (TimeDist (None, 8, 29, 40)         160
+# _________________________________________________________________
+# time_distributed_6 (TimeDist (None, 8, 29, 40)         0
+# _________________________________________________________________
+# time_distributed_7 (TimeDist (None, 8, 28, 40)         3240
+# _________________________________________________________________
+# time_distributed_8 (TimeDist (None, 8, 28, 40)         160
+# _________________________________________________________________
+# time_distributed_9 (TimeDist (None, 8, 28, 40)         0
+# _________________________________________________________________
+# time_distributed_10 (TimeDis (None, 8, 1120)           0
+# _________________________________________________________________
+# dense_1 (Dense)              (None, 8, 33)             36993
+# _________________________________________________________________
+# dropout_1 (Dropout)          (None, 8, 33)             0
+# _________________________________________________________________
+# lstm_1 (LSTM)                (None, 8, 64)             25088
+# _________________________________________________________________
+# activation_4 (Activation)    (None, 8, 64)             0
+# _________________________________________________________________
+# dropout_2 (Dropout)          (None, 8, 64)             0
+# _________________________________________________________________
+# lstm_2 (LSTM)                (None, 256)               328704
+# _________________________________________________________________
+# activation_5 (Activation)    (None, 256)               0
+# _________________________________________________________________
+# dropout_3 (Dropout)          (None, 256)               0
+# _________________________________________________________________
+# dense_2 (Dense)              (None, 33)                8481
+# =================================================================
+# Total params: 407,986
+# Trainable params: 407,746
+# Non-trainable params: 240
+# _________________________________________________________________
+
 
 model.compile(loss='mean_squared_error',
               optimizer='rmsprop',

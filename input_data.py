@@ -80,7 +80,7 @@ class DataSet(object):
 
 
 def create_data_sets():
-    samples = data_preprocess.samples
+    samples = data_preprocess.samples_by_time
     look_back = 8
     interval = 0
     flow = []

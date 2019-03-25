@@ -21,9 +21,9 @@ import build_model
 TIME_STEPS = 8  # 输入的时间步数
 INPUT_SIZE = 33  # 每步有多少数据
 OUTPUT_SIZE = 33  # 输出的维度
-EPOCHS = 20  # 迭代次数
+EPOCHS = 30  # 迭代次数
 BATCH_SIZE = 64
-
+filepath = "myModel/lstm_epochs_10.h5" # 保存模型路径
 
 def rmse(y_true, y_pred):
     return K.sqrt(K.mean(K.square(y_pred - y_true), axis=-1))
@@ -44,13 +44,22 @@ labels_validation = validation.labels
 
 print('build model...')
 
-model = build_model.build_lstm()
+model = Sequential()
+model.add(LSTM(input_shape=(TIME_STEPS, INPUT_SIZE),
+               output_dim=64,
+               return_sequences=True, ))
+model.add(Activation('tanh'))
+model.add(Dropout(0.5))
+model.add(LSTM(output_dim=256))
+model.add(Activation('tanh'))
+model.add(Dropout(0.5))
+model.add(Dense(OUTPUT_SIZE))
 
 # 打印出网络结构
 model.summary()
 
 # 产生网络拓扑图
-plot_model(model, to_file='plotModel/lstm.png')
+# plot_model(model, to_file='plotModel/lstm.png')
 
 # exit()
 
@@ -58,10 +67,7 @@ plot_model(model, to_file='plotModel/lstm.png')
 
 # 配置损失函数、优化器、评估函数
 model.compile(loss='mse', optimizer='rmsprop', metrics=['mae', rmse, 'cosine'])
-# model.compile(loss='mse', optimizer='rmsprop', metrics=['mae', 'cosine'])
 
-
-filepath = "myModel/lstm_hiden_node_20.h5"
 checkpoint = ModelCheckpoint(filepath, monitor='val_loss', verbose=1, save_best_only=True, mode='min')
 callbacks_list = [checkpoint]
 

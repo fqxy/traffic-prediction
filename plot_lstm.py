@@ -15,42 +15,39 @@ import build_model
 
 import keras
 from keras.models import Sequential
+from keras.models import load_model
 from keras.layers.core import Dense, Dropout, Activation
 from keras.layers import LSTM
 import keras.backend as K
-
+import my_metrics
 
 def rmse(y_true, y_pred):
     return K.sqrt(K.mean(K.square(y_pred - y_true), axis=-1))
 
 
-time_steps = 8
-BATCH_SIZE = 64
-TIME_STEPS = 8
-INPUT_SIZE = 33
-OUTPUT_SIZE = 33
+
 
 flow, labels = input_data.create_data_sets()
 x_test = flow[45152:]
 labels_test = labels[45152:]
 
-model = build_model.build_lstm()
-
-model.summary()
-
 # load_weights()只能被Sequential对象调用
-model.load_weights("myModel/lstm_epochs_20.h5")
+model = load_model('myModel/lstm_epochs_10.h5', custom_objects = {'rmse':rmse})
 
 scaler = data_preprocess.scaler
+
 # 将归一化数据转化为原来的数
 y_test = scaler.inverse_transform(labels_test)
 
 # 用模型进行预测
 pred = model.predict(x_test)
+
 # 将预测值转化为原来的数
 lstm_pred = scaler.inverse_transform(pred)
-print("LSTM MAE:", metrics.mean_absolute_error(y_test, lstm_pred))
-print("LSTM RMSE:", np.sqrt(metrics.mean_squared_error(y_test, lstm_pred)))
+
+print("LSTM MAE:{:.2f}".format(metrics.mean_absolute_error(y_test, lstm_pred)))
+print("LSTM RMSE:{:.2f}".format(np.sqrt(metrics.mean_squared_error(y_test, lstm_pred))))
+print("LSTM MAPE:{:.2f}%".format(my_metrics.mape(y_test, lstm_pred)))
 
 plt.rcParams['font.sans-serif'] = ['SimHei']  # for Chinese characters
 # fig, ax = plt.subplots()
