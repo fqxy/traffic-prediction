@@ -102,7 +102,7 @@ def group_by_station():
 # vehicles_by_staion = group_by_station()
 
 vehicles_by_time = np.load('data_npy/vehicles_by_time.npy')
-np.savetxt('CSV/vehicles_by_time.csv', vehicles_by_time, delimiter=',')
+# np.savetxt('CSV/vehicles_by_time.csv', vehicles_by_time, delimiter=',')
 # vehicles_by_staion = np.load('data_npy/vehicles_by_station.npy')
 # vehicles_by_station = vehicles_by_time.transpose()
 

@@ -23,7 +23,7 @@ INPUT_SIZE = 33  # 每步有多少数据
 OUTPUT_SIZE = 33  # 输出的维度
 EPOCHS = 30  # 迭代次数
 BATCH_SIZE = 64
-filepath = "myModel/lstm_epochs_10.h5" # 保存模型路径
+filepath = "myModel/lstm_epochs_30.h5" # 保存模型路径
 
 def rmse(y_true, y_pred):
     return K.sqrt(K.mean(K.square(y_pred - y_true), axis=-1))
