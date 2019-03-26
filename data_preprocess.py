@@ -10,7 +10,7 @@ import numpy as np
 from sklearn import preprocessing
 import glob
 
-FILE_NUMS = 33
+FILE_NUMS = 1
 
 
 # 读取所有.txt 文件的列
@@ -74,7 +74,7 @@ def group_by_time():
 
     # vehicles_npy的形状为(56448, 33)
     vehicles_by_time_npy = np.array(vehicles_by_time)
-    np.save('data_npy/vehicles_by_time_no_0.npy', vehicles_by_time_npy)
+    np.save('data_npy/station1.npy', vehicles_by_time_npy)
     return vehicles_by_time
 
 def group_by_station():
@@ -101,7 +101,7 @@ def group_by_station():
 # vehicles_by_time = group_by_time()
 # vehicles_by_staion = group_by_station()
 
-vehicles_by_time = np.load('data_npy/vehicles_by_time.npy')
+vehicles_by_time = np.load('data_npy/station1.npy')
 # np.savetxt('CSV/vehicles_by_time.csv', vehicles_by_time, delimiter=',')
 # vehicles_by_staion = np.load('data_npy/vehicles_by_station.npy')
 # vehicles_by_station = vehicles_by_time.transpose()

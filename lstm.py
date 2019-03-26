@@ -21,8 +21,8 @@ import input_data
 import build_model
 
 TIME_STEPS = 8  # 输入的时间步数
-INPUT_SIZE = 33  # 每步有多少数据
-OUTPUT_SIZE = 33  # 输出的维度
+INPUT_SIZE = 1  # 每步有多少数据
+OUTPUT_SIZE = INPUT_SIZE  # 输出的维度
 EPOCHS = 10  # 迭代次数
 BATCH_SIZE = 64
 drop_out = 0.3
