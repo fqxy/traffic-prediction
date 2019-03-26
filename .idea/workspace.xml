@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fc037bf0-334c-4521-a233-fc983c3a0052" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/plot/plot_station.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/plot/plot_week.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PEMS/station1/26.txt" beforeDir="false" afterPath="$PROJECT_DIR$/PEMS/station1/26.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_preprocess.py" beforeDir="false" afterPath="$PROJECT_DIR$/data_preprocess.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lstm.py" beforeDir="false" afterPath="$PROJECT_DIR$/lstm.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myModel/lstm_epochs_10.h5" beforeDir="false" afterPath="$PROJECT_DIR$/myModel/lstm_epochs_10.h5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myModel/lstm_epochs_20.h5" beforeDir="false" afterPath="$PROJECT_DIR$/myModel/lstm_epochs_20.h5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plot/plot_station.py" beforeDir="false" afterPath="$PROJECT_DIR$/plot/plot_station.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plot/plot_week.py" beforeDir="false" afterPath="$PROJECT_DIR$/plot/plot_week.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/plot_lstm.py" beforeDir="false" afterPath="$PROJECT_DIR$/plot_lstm.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/参数影响.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/参数影响.xlsx" afterDir="false" />
     </list>
@@ -24,16 +23,16 @@
     <SUITE FILE_PATH="coverage/traffic_prediction$readTXT.coverage" NAME="readTXT Coverage Results" MODIFIED="1553099015020" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/3_TrafficFlowPrediction_master$plot_lstm.coverage" NAME="plot_lstm Coverage Results" MODIFIED="1552583802606" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/traffic_prediction$test.coverage" NAME="test Coverage Results" MODIFIED="1552663414304" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/traffic_prediction$plot_station.coverage" NAME="plot_station Coverage Results" MODIFIED="1553576839372" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/plot" />
+    <SUITE FILE_PATH="coverage/traffic_prediction$plot_station.coverage" NAME="plot_station Coverage Results" MODIFIED="1553577265513" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/plot" />
     <SUITE FILE_PATH="coverage/3_TrafficFlowPrediction_master$lstm.coverage" NAME="lstm Coverage Results" MODIFIED="1552029113299" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/3_TrafficFlowPrediction_master$data_preprocess.coverage" NAME="data_preprocess Coverage Results" MODIFIED="1551976387030" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/PeMS" />
-    <SUITE FILE_PATH="coverage/traffic_prediction$plot_lstm.coverage" NAME="plot_lstm Coverage Results" MODIFIED="1553527527343" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/traffic_prediction$plot_lstm.coverage" NAME="plot_lstm Coverage Results" MODIFIED="1553578899111" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/3_traffic$dynamic_plot.coverage" NAME="dynamic_plot Coverage Results" MODIFIED="1552649465567" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/3_traffic$plot_lstm.coverage" NAME="plot_lstm Coverage Results" MODIFIED="1552660304376" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/3_TrafficFlowPrediction_master$input_data.coverage" NAME="input_data Coverage Results" MODIFIED="1552579419002" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/3_TrafficFlowPrediction_master$data_preprocess__1_.coverage" NAME="data_preprocess (1) Coverage Results" MODIFIED="1552577164798" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/traffic_prediction$input_data.coverage" NAME="input_data Coverage Results" MODIFIED="1553318511829" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/traffic_prediction$plot_week__1_.coverage" NAME="plot_week (1) Coverage Results" MODIFIED="1553576809350" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/plot" />
+    <SUITE FILE_PATH="coverage/traffic_prediction$plot_week__1_.coverage" NAME="plot_week (1) Coverage Results" MODIFIED="1553577245826" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/plot" />
     <SUITE FILE_PATH="coverage/traffic_prediction$txt2json.coverage" NAME="txt2json Coverage Results" MODIFIED="1553096787614" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/traffic_prediction$data_preprocess.coverage" NAME="data_preprocess Coverage Results" MODIFIED="1553519785499" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/traffic_prediction$lstm.coverage" NAME="lstm Coverage Results" MODIFIED="1553526548990" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -58,7 +57,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data_preprocess.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="647">
+            <state relative-caret-position="1995">
               <caret line="108" selection-start-line="108" selection-end-line="110" selection-end-column="56" />
               <folding>
                 <element signature="e#87#106#0" expanded="true" />
@@ -70,8 +69,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/plot/plot_week.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="36" column="32" lean-forward="true" selection-start-line="36" selection-start-column="32" selection-end-line="36" selection-end-column="32" />
+            <state relative-caret-position="690">
+              <caret line="45" column="16" selection-start-line="45" selection-start-column="16" selection-end-line="45" selection-end-column="16" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -82,10 +81,47 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/plot/plot_station.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="12" column="50" selection-start-line="12" selection-start-column="50" selection-end-line="12" selection-end-column="50" />
+            <state relative-caret-position="627">
+              <caret line="36" column="32" selection-start-line="36" selection-start-column="32" selection-end-line="36" selection-end-column="32" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/input_data.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="70">
+              <caret line="85" column="13" selection-start-line="85" selection-start-column="13" selection-end-line="85" selection-end-column="13" />
+              <folding>
+                <element signature="e#76#94#0" expanded="true" />
+                <element signature="e#277#2463#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lstm.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="19">
+              <caret line="48" selection-start-line="48" selection-end-line="48" />
+              <folding>
+                <element signature="e#48#85#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/plot_lstm.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-76">
+              <caret line="30" column="21" lean-forward="true" selection-start-line="30" selection-start-column="21" selection-end-line="30" selection-end-column="21" />
+              <folding>
+                <element signature="e#25#75#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -127,13 +163,13 @@
         <option value="$PROJECT_DIR$/my_metrics.py" />
         <option value="$PROJECT_DIR$/build_model.py" />
         <option value="$PROJECT_DIR$/lstm.py" />
-        <option value="$PROJECT_DIR$/plot_lstm.py" />
         <option value="$PROJECT_DIR$/data_preprocess.py" />
         <option value="$PROJECT_DIR$/plot_week.py" />
         <option value="$PROJECT_DIR$/PEMS/station1/11.txt" />
         <option value="$PROJECT_DIR$/PEMS/station1/26.txt" />
-        <option value="$PROJECT_DIR$/plot/plot_station.py" />
         <option value="$PROJECT_DIR$/plot/plot_week.py" />
+        <option value="$PROJECT_DIR$/plot/plot_station.py" />
+        <option value="$PROJECT_DIR$/plot_lstm.py" />
       </list>
     </option>
   </component>
@@ -151,6 +187,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -161,13 +198,17 @@
             <path>
               <item name="traffic-prediction" type="b2602c69:ProjectViewProjectNode" />
               <item name="traffic-prediction" type="462c0819:PsiDirectoryNode" />
+              <item name="myModel" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="traffic-prediction" type="b2602c69:ProjectViewProjectNode" />
+              <item name="traffic-prediction" type="462c0819:PsiDirectoryNode" />
               <item name="plot" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -198,7 +239,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.plot_station">
+  <component name="RunManager" selected="Python.plot_lstm">
     <configuration name="lstm" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="3-TrafficFlowPrediction-master" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -311,10 +352,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.plot_lstm" />
         <item itemvalue="Python.plot_station" />
         <item itemvalue="Python.plot_week (1)" />
         <item itemvalue="Python.plot_week" />
-        <item itemvalue="Python.plot_lstm" />
         <item itemvalue="Python.lstm" />
       </list>
     </recent_temporary>
@@ -343,7 +384,8 @@
       <workItem from="1553351672760" duration="7397000" />
       <workItem from="1553426151320" duration="5019000" />
       <workItem from="1553438235947" duration="32611000" />
-      <workItem from="1553571126585" duration="1928000" />
+      <workItem from="1553571126585" duration="3120000" />
+      <workItem from="1553578841127" duration="952000" />
     </task>
     <task id="LOCAL-00001" summary="modify">
       <created>1552665241193</created>
@@ -387,17 +429,23 @@
       <option name="project" value="LOCAL" />
       <updated>1553526095006</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="modify">
+      <created>1553576938646</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1553576938646</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="101869000" />
+    <option name="totallyTimeSpent" value="104013000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="848" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17158177" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1735925" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -406,7 +454,7 @@
       <window_info anchor="bottom" id="Inspection" order="3" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="4" />
       <window_info anchor="bottom" id="Docker" order="5" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="6" weight="0.3282123" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="6" visible="true" weight="0.40642458" />
       <window_info anchor="bottom" id="Database Changes" order="7" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.32960895" />
@@ -416,8 +464,8 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Database" order="3" weight="0.18766756" />
-      <window_info anchor="right" id="SciView" order="4" weight="0.3766756" />
-      <window_info anchor="right" id="Run" order="5" weight="0.3914209" />
+      <window_info anchor="right" id="SciView" order="4" weight="0.21447721" />
+      <window_info anchor="right" id="Run" order="5" visible="true" weight="0.3914209" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -552,43 +600,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lstm.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="627">
-          <caret line="48" selection-start-line="48" selection-end-line="48" />
-          <folding>
-            <element signature="e#48#85#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plot_lstm.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="28" selection-start-line="28" selection-end-line="28" />
-          <folding>
-            <element signature="e#25#75#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/build_model.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="95">
           <caret line="15" column="25" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="25" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/input_data.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="109" column="23" selection-start-line="109" selection-start-column="18" selection-end-line="109" selection-end-column="23" />
-          <folding>
-            <element signature="e#76#94#0" expanded="true" />
-            <element signature="e#277#2463#0" />
           </folding>
         </state>
       </provider>
@@ -778,7 +795,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/data_preprocess.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="647">
+        <state relative-caret-position="1995">
           <caret line="108" selection-start-line="108" selection-end-line="110" selection-end-column="56" />
           <folding>
             <element signature="e#87#106#0" expanded="true" />
@@ -788,18 +805,49 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/plot/plot_station.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="12" column="50" selection-start-line="12" selection-start-column="50" selection-end-line="12" selection-end-column="50" />
+        <state relative-caret-position="627">
+          <caret line="36" column="32" selection-start-line="36" selection-start-column="32" selection-end-line="36" selection-end-column="32" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/input_data.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="70">
+          <caret line="85" column="13" selection-start-line="85" selection-start-column="13" selection-end-line="85" selection-end-column="13" />
+          <folding>
+            <element signature="e#76#94#0" expanded="true" />
+            <element signature="e#277#2463#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lstm.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="48" selection-start-line="48" selection-end-line="48" />
+          <folding>
+            <element signature="e#48#85#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plot_lstm.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-76">
+          <caret line="30" column="21" lean-forward="true" selection-start-line="30" selection-start-column="21" selection-end-line="30" selection-end-column="21" />
+          <folding>
+            <element signature="e#25#75#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/plot/plot_week.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="36" column="32" lean-forward="true" selection-start-line="36" selection-start-column="32" selection-end-line="36" selection-end-column="32" />
+        <state relative-caret-position="690">
+          <caret line="45" column="16" selection-start-line="45" selection-start-column="16" selection-end-line="45" selection-end-column="16" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>

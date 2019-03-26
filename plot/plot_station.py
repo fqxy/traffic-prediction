@@ -24,11 +24,11 @@ matplotlib.rcParams['font.family'] = 'SimHei'
 
 plt.figure(figsize=(10, 4))
 
-plt.plot(y1)
-plt.plot(y2)
-plt.plot(y3)
-plt.plot(y4)
-plt.plot(y5)
+plt.plot(y1, linewidth = 1)
+plt.plot(y2, linewidth = 1)
+plt.plot(y3, linewidth = 1)
+plt.plot(y4, linewidth = 1)
+plt.plot(y5, linewidth = 1)
 plt.legend(('staion_1', 'staion_2', 'staion_3', 'staion_4', 'staion_5'), loc = 'upper right')
 plt.xlabel('时间')
 plt.xticks([0, 72, 144, 216, 288, 360, 432, 504, 576],

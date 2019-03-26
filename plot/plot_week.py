@@ -26,11 +26,11 @@ matplotlib.rcParams['font.family'] = 'SimHei'
 plt.figure(figsize=(7, 7))
 
 plt.subplot(211)
-plt.plot(y1)
-plt.plot(y2)
-plt.plot(y3)
-plt.plot(y4)
-plt.plot(y5)
+plt.plot(y1, linewidth = 1)
+plt.plot(y2, linewidth = 1)
+plt.plot(y3, linewidth = 1)
+plt.plot(y4, linewidth = 1)
+plt.plot(y5, linewidth = 1)
 plt.legend(('周一', '周二', '周三', '周四', '周五'), loc = 'upper right')
 plt.xlabel('时间')
 plt.xticks([0, 36, 72, 108, 144, 180, 216, 252, 288],
@@ -40,8 +40,8 @@ plt.ylabel('车流量(Veh/5 Minutes)')
 plt.grid(True)
 
 plt.subplot(212)
-plt.plot(y6, label="周六")
-plt.plot(y7, label="周日")
+plt.plot(y6, linewidth = 1)
+plt.plot(y7, linewidth = 1)
 plt.legend(('周六', '周日'), loc = 'upper right')
 plt.xlabel('时间')
 plt.xticks([0, 36, 72, 108, 144, 180, 216, 252, 288],
