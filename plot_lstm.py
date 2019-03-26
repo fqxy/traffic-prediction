@@ -32,7 +32,7 @@ x_test = flow[45152:]
 labels_test = labels[45152:]
 
 # load_weights()只能被Sequential对象调用
-model = load_model('myModel/lstm_epochs_40.h5', custom_objects = {'rmse':rmse})
+model = load_model('myModel/lstm_epochs_20.h5', custom_objects = {'rmse':rmse})
 
 scaler = data_preprocess.scaler
 
