@@ -3,6 +3,7 @@
 
 from __future__ import print_function
 
+import keras
 from keras.models import Sequential
 from keras.models import model_from_json
 from keras.layers.core import Dense, Dropout, Activation
@@ -21,9 +22,12 @@ import build_model
 TIME_STEPS = 8  # 输入的时间步数
 INPUT_SIZE = 33  # 每步有多少数据
 OUTPUT_SIZE = 33  # 输出的维度
-EPOCHS = 30  # 迭代次数
+EPOCHS = 10  # 迭代次数
 BATCH_SIZE = 64
-filepath = "myModel/lstm_epochs_30.h5" # 保存模型路径
+drop_out = 0.3
+filepath = 'myModel/lstm_epochs' + str(EPOCHS) + '_dropout' + str(drop_out) + '_v1' # 保存模型路径
+model_filepath = filepath +'.h5'
+log_filepath = filepath + '_log'
 
 def rmse(y_true, y_pred):
     return K.sqrt(K.mean(K.square(y_pred - y_true), axis=-1))
@@ -49,10 +53,10 @@ model.add(LSTM(input_shape=(TIME_STEPS, INPUT_SIZE),
                output_dim=64,
                return_sequences=True, ))
 model.add(Activation('tanh'))
-model.add(Dropout(0.5))
+model.add(Dropout(drop_out))
 model.add(LSTM(output_dim=256))
 model.add(Activation('tanh'))
-model.add(Dropout(0.5))
+model.add(Dropout(drop_out))
 model.add(Dense(OUTPUT_SIZE))
 
 # 打印出网络结构
@@ -71,16 +75,19 @@ model.compile(loss='mse', optimizer='rmsprop', metrics=['mae', rmse, 'cosine'])
 checkpoint = ModelCheckpoint(filepath, monitor='val_loss', verbose=1, save_best_only=True, mode='min')
 callbacks_list = [checkpoint]
 
+tb_cb = keras.callbacks.TensorBoard(log_dir=log_filepath, write_images=1, histogram_freq=1)
+cbks = [tb_cb]
+
 # 训练
 print('Train...')
-model.fit(flow_train,
-          labels_train,
-          epochs=EPOCHS,
-          callbacks=callbacks_list,
-          batch_size=BATCH_SIZE,
-          validation_data=(flow_validation, labels_validation))
+history = model.fit(flow_train,labels_train,
+                    epochs=EPOCHS,
+                    batch_size=BATCH_SIZE,
+                    verbose=1,
+                    callbacks=cbks,
+                    validation_data=(flow_validation, labels_validation))
 
-model.save(filepath)
+model.save(model_filepath)
 
 score = model.evaluate(flow_test, labels_test, verbose=0)
 print('Test socre:', score)
