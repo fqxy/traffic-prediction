@@ -11,6 +11,7 @@ from keras.layers import LSTM
 from keras.layers.wrappers import TimeDistributed
 from keras.layers.normalization import BatchNormalization
 from keras.callbacks import ModelCheckpoint
+from keras.callbacks import TensorBoard
 from keras.optimizers import RMSprop
 from keras.callbacks import EarlyStopping
 import keras.backend as K
@@ -27,7 +28,8 @@ BATCH_SIZE = 64
 drop_out = 0.3
 filepath = 'myModel/lstm_epochs' + str(EPOCHS) + '_dropout' + str(drop_out) + '_v1' # 保存模型路径
 model_filepath = filepath +'.h5'
-log_filepath = filepath + '_log'
+checkpoint_filepath = filepath + '_checkpoint'
+tensorboard_filepath = filepath + '_log'
 
 def rmse(y_true, y_pred):
     return K.sqrt(K.mean(K.square(y_pred - y_true), axis=-1))
@@ -72,11 +74,16 @@ model.summary()
 # 配置损失函数、优化器、评估函数
 model.compile(loss='mse', optimizer='rmsprop', metrics=['mae', rmse, 'cosine'])
 
-checkpoint = ModelCheckpoint(filepath, monitor='val_loss', verbose=1, save_best_only=True, mode='min')
-callbacks_list = [checkpoint]
-
-tb_cb = keras.callbacks.TensorBoard(log_dir=log_filepath, write_images=1, histogram_freq=1)
-cbks = [tb_cb]
+checkpoint_callbacks = ModelCheckpoint(filepath = checkpoint_filepath,
+                                       monitor='val_loss',
+                                       verbose=1,
+                                       save_best_only=True,
+                                       mode='min')
+checkpoint_callbacks_list = [checkpoint_callbacks]
+tensorboard_callbacks = TensorBoard(log_dir=tensorboard_filepath,
+                                    write_images=1,
+                                    histogram_freq=1)
+tensorboard_callbacks_list = [tensorboard_callbacks]
 
 # 训练
 print('Train...')
@@ -84,7 +91,7 @@ history = model.fit(flow_train,labels_train,
                     epochs=EPOCHS,
                     batch_size=BATCH_SIZE,
                     verbose=1,
-                    callbacks=cbks,
+                    callbacks=tensorboard_callbacks_list,
                     validation_data=(flow_validation, labels_validation))
 
 model.save(model_filepath)
