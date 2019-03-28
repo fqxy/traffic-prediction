@@ -20,6 +20,7 @@ from keras.layers.core import Dense, Dropout, Activation
 from keras.layers import LSTM
 import keras.backend as K
 import my_metrics
+from LSTM_config import *
 
 def rmse(y_true, y_pred):
     return K.sqrt(K.mean(K.square(y_pred - y_true), axis=-1))
@@ -30,7 +31,7 @@ x_test = flow[45152:]
 labels_test = labels[45152:]
 
 # load_weights()只能被Sequential对象调用
-model = load_model('myModel/lstm_epochs10_dropout0.3_v1.h5', custom_objects = {'rmse':rmse})
+model = load_model(load_model_file, custom_objects = {'rmse':rmse})
 
 scaler = data_preprocess.scaler
 
@@ -79,8 +80,8 @@ plt.ylabel(u'车流量')
 plt.ylim((0, 900))
 plt.yticks(np.linspace(0, 900, 10))
 plt.xticks(rotation=30)
-l3, = ax2.plot(dates, y_test[56:344, 16], label=u"真实值")
-l4, = ax2.plot(dates, lstm_pred[56:344, 16], color='red', label=u"LSTMs")
+l3, = ax2.plot(dates, y_test[56:344, 0], label=u"真实值")
+l4, = ax2.plot(dates, lstm_pred[56:344, 0], color='red', label=u"LSTMs")
 plt.legend(handles=[l3, l4], loc='upper right')
 #
 # ax = plt.gca()

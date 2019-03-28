@@ -19,17 +19,8 @@ from keras.utils import plot_model
 
 import input_data
 import build_model
+from LSTM_config import *
 
-TIME_STEPS = 8  # 输入的时间步数
-INPUT_SIZE = 1  # 每步有多少数据
-OUTPUT_SIZE = INPUT_SIZE  # 输出的维度
-EPOCHS = 10  # 迭代次数
-BATCH_SIZE = 64
-drop_out = 0.3
-filepath = 'myModel/lstm_epochs' + str(EPOCHS) + '_dropout' + str(drop_out) + '_v1' # 保存模型路径
-model_filepath = filepath +'.h5'
-checkpoint_filepath = filepath + '_checkpoint'
-tensorboard_filepath = filepath + '_log'
 
 def rmse(y_true, y_pred):
     return K.sqrt(K.mean(K.square(y_pred - y_true), axis=-1))
@@ -50,6 +41,7 @@ labels_validation = validation.labels
 
 print('build model...')
 
+# return_sequences: Boolean. 是否返回最后一个输出或是整个序列的输出，默认是False
 model = Sequential()
 model.add(LSTM(input_shape=(TIME_STEPS, INPUT_SIZE),
                output_dim=64,
@@ -64,12 +56,32 @@ model.add(Dense(OUTPUT_SIZE))
 # 打印出网络结构
 model.summary()
 
+# Layer (type)                 Output Shape              Param #
+# =================================================================
+# lstm_1 (LSTM)                (None, 8, 64)             16896
+# _________________________________________________________________
+# activation_1 (Activation)    (None, 8, 64)             0
+# _________________________________________________________________
+# dropout_1 (Dropout)          (None, 8, 64)             0
+# _________________________________________________________________
+# lstm_2 (LSTM)                (None, 256)               328704
+# _________________________________________________________________
+# activation_2 (Activation)    (None, 256)               0
+# _________________________________________________________________
+# dropout_2 (Dropout)          (None, 256)               0
+# _________________________________________________________________
+# dense_1 (Dense)              (None, 1)                 257
+# =================================================================
+# Total params: 345,857
+# Trainable params: 345,857
+# Non-trainable params: 0
+# _________________________________________________________________
+
+
 # 产生网络拓扑图
 # plot_model(model, to_file='plotModel/lstm.png')
 
 # exit()
-
-# model.load_weights("Model/lstm.h5")
 
 # 配置损失函数、优化器、评估函数
 model.compile(loss='mse', optimizer='rmsprop', metrics=['mae', rmse, 'cosine'])
@@ -91,7 +103,7 @@ history = model.fit(flow_train,labels_train,
                     epochs=EPOCHS,
                     batch_size=BATCH_SIZE,
                     verbose=1,
-                    callbacks=tensorboard_callbacks_list,
+                    # callbacks=checkpoint_callbacks_list,
                     validation_data=(flow_validation, labels_validation))
 
 model.save(model_filepath)

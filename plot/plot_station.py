@@ -5,7 +5,7 @@ from sklearn import preprocessing
 # 导入 matplotlib 的所有内容（nympy 可以用 np 这个名字来使用）
 # from pylab import *
 
-vehicles_by_time = np.load('../data_npy/vehicles_by_time.npy')
+vehicles_by_time = np.load('../data_npy/by_time.npy')
 
 scaler = preprocessing.MinMaxScaler()
 vehicles_by_time = scaler.fit_transform(vehicles_by_time)

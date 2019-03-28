@@ -11,6 +11,7 @@ import data_preprocess
 from tensorflow.contrib.learn.python.learn.datasets import base
 from sklearn.model_selection import train_test_split
 
+from LSTM_config import *
 
 class DataSet(object):
     def __init__(self, flow, labels):
@@ -81,7 +82,7 @@ class DataSet(object):
 
 def create_data_sets():
     samples = data_preprocess.samples_by_time
-    look_back = 8
+    look_back = TIME_STEPS
     interval = 0
     flow = []
     labels = []
@@ -120,7 +121,7 @@ def read_data_sets():
     validation_labels = train_labels[:validation_size]
 
     # ② 训练集
-    # train_flow(37152,88,33)
+    # train_flow(37152,8,33)
     train_flow = train_flow[validation_size:]
     # train_labels(37152,33)
     train_labels = train_labels[validation_size:]

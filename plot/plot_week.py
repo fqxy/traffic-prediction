@@ -6,7 +6,7 @@ from sklearn import preprocessing
 # 导入 matplotlib 的所有内容（nympy 可以用 np 这个名字来使用）
 # from pylab import *
 
-vehicles_by_time = np.load('../data_npy/vehicles_by_time.npy')
+vehicles_by_time = np.load('../data_npy/by_time.npy')
 
 scaler = preprocessing.MinMaxScaler()
 vehicles_by_time = scaler.fit_transform(vehicles_by_time)
@@ -23,9 +23,9 @@ y7 = vehicles_by_station[16][288*7:288*8]
 
 matplotlib.rcParams['font.family'] = 'SimHei'
 
-plt.figure(figsize=(7, 7))
+plt.figure(figsize=(12, 4))
 
-plt.subplot(211)
+plt.subplot(121)
 plt.plot(y1, linewidth = 1)
 plt.plot(y2, linewidth = 1)
 plt.plot(y3, linewidth = 1)
@@ -39,7 +39,7 @@ plt.xticks([0, 36, 72, 108, 144, 180, 216, 252, 288],
 plt.ylabel('车流量(Veh/5 Minutes)')
 plt.grid(True)
 
-plt.subplot(212)
+plt.subplot(122)
 plt.plot(y6, linewidth = 1)
 plt.plot(y7, linewidth = 1)
 plt.legend(('周六', '周日'), loc = 'upper right')
